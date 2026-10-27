@@ -52,7 +52,7 @@ class DeviceRetrievalTest {
             assertEquals(2, search("blue square", AssetKind.DOCUMENT).hits.first().chunk!!.pageNumber)
             val video = search("red circle", AssetKind.VIDEO).hits.first()
             assertEquals("fixture-clip.mp4", video.asset.name)
-            assertEquals(2_000L, video.chunk!!.startMs)
+            assertEquals(if (video.chunk!!.recipe == dev.keeps.core.VideoWindows.RECIPE) 0L else 2_000L, video.chunk!!.startMs)
             val audio = search("a steady electronic tone", AssetKind.AUDIO).hits.first()
             assertEquals("fixture-tone.wav", audio.asset.name)
             assertEquals(3_000L, audio.chunk!!.endMs)

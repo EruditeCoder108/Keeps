@@ -1,0 +1,12 @@
+[
+  {
+    "path": "app\\build\\outputs\\apk\\debug\\app-debug.apk",
+    "bytes": 125121764,
+    "sha256": "31c6031d1126c30b63ce5235e14760c23730ee8f5c452a78cd5d1eee309858be"
+  },
+  {
+    "path": "app\\build\\outputs\\apk\\benchmark\\app-benchmark.apk",
+    "bytes": 54225401,
+    "sha256": "2045b0aca3ae72497f3efa0607f17f61f6c6530862e7c0f3bf2415bc5ffe0a1a"
+  }
+]

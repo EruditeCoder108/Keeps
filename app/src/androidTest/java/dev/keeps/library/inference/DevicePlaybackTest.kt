@@ -22,7 +22,7 @@ class DevicePlaybackTest {
         val context = instrumentation.targetContext
         val graph = (context.applicationContext as KeepsApplication).graph
         for (name in listOf("fixture-tone.wav", "fixture-clip.mp4")) {
-            val asset = graph.dao.assets().singleOrNull { it.name == name && it.uri.contains("KeepsTest") }
+            val asset = graph.dao.assets().singleOrNull { it.name == name && (it.uri.contains("KeepsTest") || it.uri.contains("KeepsBrowseTest")) }
             assumeTrue("Import synthetic fixtures through SAF first", asset != null)
             val ready = CountDownLatch(1)
             val error = AtomicReference<PlaybackException?>()

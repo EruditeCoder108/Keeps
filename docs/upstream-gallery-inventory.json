@@ -1,0 +1,51 @@
+{
+  "commit": "3210720d3f808f51bae52798435d0c590ddc05bf",
+  "license": "Apache-2.0",
+  "files": [
+    {
+      "path": "Android/src/app/src/main/java/com/google/ai/edge/gallery/customtasks/videomomentfinder/AudioInterleaving.kt",
+      "sha256": "2c7d8be57164a7f43f27dbe41fa60dc9b8a51797679d8a15fa29e92b88048a94",
+      "lines": 166
+    },
+    {
+      "path": "Android/src/app/src/main/java/com/google/ai/edge/gallery/customtasks/videomomentfinder/VideoAudioExtractor.kt",
+      "sha256": "ada60ec54cd8f06ab5f90b4cf7cf75c638c577f80929dc5bee552ba441ac0ff5",
+      "lines": 443
+    },
+    {
+      "path": "Android/src/app/src/main/java/com/google/ai/edge/gallery/customtasks/videomomentfinder/VideoDecoderSupport.kt",
+      "sha256": "27bfa0be7fb8736c4289827380731bf0f826e331804c93eedc6c17cda4bda652",
+      "lines": 127
+    },
+    {
+      "path": "Android/src/app/src/main/java/com/google/ai/edge/gallery/customtasks/videomomentfinder/Mp4Normalizer.kt",
+      "sha256": "52dcd1ddfcca5b95c07aa9b7ff71ba231ea03120975882bb1ac5f7f02e8928f1",
+      "lines": 389
+    },
+    {
+      "path": "Android/src/app/src/main/java/com/google/ai/edge/gallery/services/semanticretrieval/OnDeviceEmbedder.kt",
+      "sha256": "8f4d47c9dbe718caedbfa255a9b36b9ca7e76b46857b297130d531ff3ae1c54e",
+      "lines": 577
+    },
+    {
+      "path": "Android/src/app/src/main/java/com/google/ai/edge/gallery/services/semanticretrieval/SemanticRetrievalService.kt",
+      "sha256": "8ec601bbb34e5ca94911402c166a0f1ab2108160464553f3fad32b5f08a6ebcb",
+      "lines": 745
+    }
+  ],
+  "adaptations": [
+    {
+      "upstream": "AudioInterleaving.kt",
+      "destinations": [
+        "core/src/main/kotlin/dev/keeps/core/AudioInterleaving.kt"
+      ]
+    },
+    {
+      "upstream": "VideoAudioExtractor.kt",
+      "destinations": [
+        "app/src/main/java/dev/keeps/library/indexing/VideoAudioExtractor.kt",
+        "core/src/main/kotlin/dev/keeps/core/AudioPcm.kt"
+      ]
+    }
+  ]
+}

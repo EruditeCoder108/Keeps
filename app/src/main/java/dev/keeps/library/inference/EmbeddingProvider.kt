@@ -8,6 +8,7 @@ import com.google.ai.edge.litertlm.EmbeddingEngineConfig
 import com.google.ai.edge.litertlm.EmbeddingOptions
 import com.google.ai.edge.litertlm.InputData
 import dev.keeps.core.Vectors
+import dev.keeps.core.WindowPart
 import java.io.File
 import java.io.FileOutputStream
 import java.security.MessageDigest
@@ -19,12 +20,15 @@ import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.*
 
-data class ModelState(val installed: Boolean = false, val importing: Boolean = false, val digest: String = "", val size: Long = 0)
+data class ModelState(val installed: Boolean = false, val importing: Boolean = false, val digest: String = "", val size: Long = 0, val loaded: Boolean = false)
 sealed interface EmbeddingInput {
     data class Text(val value: String) : EmbeddingInput
     data class Image(val bytes: ByteArray) : EmbeddingInput
     data class Audio(val wav: ByteArray) : EmbeddingInput
+    data class Pcm(val samples: ShortArray) : EmbeddingInput
+    data class Sequence(val parts: List<WindowPart>) : EmbeddingInput
 }
 
 interface EmbeddingProvider {
@@ -43,6 +47,8 @@ class LocalEmbeddingProvider(private val context: Context) : EmbeddingProvider {
     private val preferences = context.getSharedPreferences("model", Context.MODE_PRIVATE)
     private val gate = Mutex()
     private var engine: EmbeddingEngine? = null
+    private val idleScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+    private var idleJob: Job? = null
     private val mutableState = MutableStateFlow(readState())
     val state = mutableState.asStateFlow()
     override val namespace get() = "embeddinggemma2:${state.value.digest}:768:model-card-v1:cpu:preprocess-v1"
@@ -108,32 +114,60 @@ class LocalEmbeddingProvider(private val context: Context) : EmbeddingProvider {
     }
 
     suspend fun unload() = withContext(Dispatchers.IO) {
-        gate.withLock { engine?.close(); engine = null }
+        idleJob?.cancel()
+        gate.withLock { engine?.close(); engine = null; mutableState.value = state.value.copy(loaded = false) }
     }
 
     override suspend fun embed(input: EmbeddingInput, expectedNamespace: String): FloatArray = withContext(Dispatchers.Default) {
         gate.withLock {
+            idleJob?.cancel()
             check(state.value.installed) { "Import an EmbeddingGemma 2 model pack in Settings" }
             check(namespace == expectedNamespace) { "Model changed; retry indexing" }
             val active = engine ?: createEngine(modelFile()).also { it.initialize(); engine = it }
+            mutableState.value = state.value.copy(loaded = true)
             val data = when (input) {
-                is EmbeddingInput.Text -> InputData.Text(input.value)
-                is EmbeddingInput.Image -> InputData.Image(input.bytes)
-                is EmbeddingInput.Audio -> InputData.Audio(input.wav)
+                is EmbeddingInput.Text -> listOf(InputData.Text(input.value))
+                is EmbeddingInput.Image -> listOf(InputData.Image(input.bytes))
+                is EmbeddingInput.Audio -> listOf(InputData.Audio(input.wav))
+                is EmbeddingInput.Pcm -> listOf(InputData.Audio(pcmWav(input.samples)))
+                is EmbeddingInput.Sequence -> {
+                    require(input.parts.isNotEmpty() && input.parts.size <= 32)
+                    input.parts.map { part -> when (part) {
+                        is WindowPart.Text -> InputData.Text(part.text)
+                        is WindowPart.Image -> InputData.Image(part.imageData)
+                        is WindowPart.Audio -> InputData.Audio(pcmWav(part.pcm))
+                    } }
+                }
             }
-            val result = active.computeEmbedding(listOf(data), options).embedding
-            check(result.size == 768) { "Unexpected embedding dimension" }
-            Vectors.normalize(result)
+            try {
+                val result = active.computeEmbedding(data, options).embedding
+                check(result.size == 768) { "Unexpected embedding dimension" }
+                Vectors.normalize(result)
+            } finally {
+                idleJob = idleScope.launch {
+                    delay(60_000)
+                    gate.withLock { engine?.close(); engine = null; mutableState.value = state.value.copy(loaded = false) }
+                }
+            }
         }
     }
 
     private fun createEngine(file: File, cache: File = inferenceDirectory) = EmbeddingEngine(EmbeddingEngineConfig(
         modelPath = file.absolutePath,
-        backend = Backend.CPU(), visionBackend = Backend.CPU(), audioBackend = Backend.CPU(),
+        backend = Backend.CPU(threadCount = 2), visionBackend = Backend.CPU(threadCount = 2), audioBackend = Backend.CPU(threadCount = 2),
         cacheDir = cache.absolutePath,
     ))
 
     companion object {
+        private fun pcmWav(samples: ShortArray): ByteArray {
+            require(samples.size in 1..480_000)
+            val bytes = java.nio.ByteBuffer.allocate(44 + samples.size * 2).order(java.nio.ByteOrder.LITTLE_ENDIAN)
+            bytes.put("RIFF".toByteArray()).putInt(36 + samples.size * 2).put("WAVEfmt ".toByteArray()).putInt(16)
+                .putShort(1).putShort(1).putInt(16_000).putInt(32_000).putShort(2).putShort(16)
+                .put("data".toByteArray()).putInt(samples.size * 2)
+            samples.forEach { bytes.putShort(it) }
+            return bytes.array()
+        }
         private val options = EmbeddingOptions(normalize = true, outputSize = 768)
         fun query(value: String) = EmbeddingInput.Text("task: search result | query: ${value.trim()}")
         fun document(title: String, value: String) = EmbeddingInput.Text("title: $title | text: $value")

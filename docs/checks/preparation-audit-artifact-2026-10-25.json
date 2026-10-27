@@ -1,0 +1,17 @@
+{
+  "lint_warnings": 85,
+  "notes": "Optimized APK built; no phone installation, actual-model inference, or sustained heat/speed claim in this slice.",
+  "lint_errors": 0,
+  "signing": "local debug key; same certificate as 18 October delivery",
+  "core_tests": 43.0,
+  "room_version": 6,
+  "bytes": 54741663,
+  "date": "2026-10-26",
+  "variant": "benchmark",
+  "has_internet_permission": false,
+  "android_simulation_tests": 23.0,
+  "installed_on_phone": false,
+  "physical_tests_this_slice": 0,
+  "sha256": "38934f33538c88f798447093d5fc7d9f8dc9d42bf4b899ad816cd9182c8c5a1d",
+  "audit_started": "2026-10-25"
+}

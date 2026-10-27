@@ -1,0 +1,21 @@
+Keeps
+Copyright 2026 Keeps contributors
+
+Keeps includes code selectively adapted from Google AI Edge Gallery.
+Copyright 2026 Google LLC. Licensed under the Apache License, Version 2.0.
+Original headers and modification notices are retained in the adapted files.
+The pinned source and file-level provenance are recorded in docs/THIRD_PARTY.md.
+The upstream license is retained at:
+app/src/main/assets/notices/google-ai-edge-gallery-LICENSE.txt
+
+Keeps includes the Geist font.
+Copyright 2024 The Geist Project Authors.
+Licensed under the SIL Open Font License, Version 1.1, retained at:
+app/src/main/assets/notices/geist-OFL.txt
+
+Model packs are obtained separately and are not distributed with this source
+tree or the application package. See DEVICE_TESTING.md for tested provenance.
+
+This notice records incorporated source and assets. It is not a complete
+transitive dependency license report; release packaging must retain any
+additional notices required by resolved dependencies.

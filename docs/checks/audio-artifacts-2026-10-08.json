@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-08",
+  "variant": "debug",
+  "path": "app/build/outputs/apk/debug/app-debug.apk",
+  "bytes": 125258736,
+  "sha256": "58a9707ca572af30131190040dc65395a2eb679f4d0367ab895a5847637f7f4a",
+  "instrumentedApkSha256": "4ddf1765bd605f3593d5be655790acddcce5be101df106fb68dd30fc1118aafd",
+  "postInstrumentationChange": "Nearest actual frame for video thumbnails; native indexing/core unchanged",
+  "jvmTests": 24,
+  "jvmFailures": 0,
+  "focusedPhoneTests": 2,
+  "focusedPhoneFailures": 0,
+  "focusedPhoneSkips": 0,
+  "lintErrors": 0,
+  "lintWarnings": 37,
+  "benchmarkRebuilt": false
+}

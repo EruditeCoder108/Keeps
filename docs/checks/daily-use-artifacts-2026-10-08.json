@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-08",
+  "installedVariant": "benchmark",
+  "signing": "local debug key",
+  "artifacts": [
+    {
+      "path": "app\\build\\outputs\\apk\\benchmark\\app-benchmark.apk",
+      "bytes": 54423001,
+      "sha256": "0225233659794f45b81ca213f4c40145cf7bed78f7b58f9ed8266cae301c6014"
+    },
+    {
+      "path": "app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "bytes": 126475437,
+      "sha256": "0acb39555b903948e396b7d168386a6ba0b245f50185ec8af4fe70d7457af61a"
+    },
+    {
+      "path": "app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+      "bytes": 3539452,
+      "sha256": "5f3439093f54c9e93bd8c328c809b9a4d3045562bb302170e1af8880cddadfbd"
+    },
+    {
+      "path": "artifacts\\Keeps-preview-2026-10-08.apk",
+      "bytes": 54423001,
+      "sha256": "0225233659794f45b81ca213f4c40145cf7bed78f7b58f9ed8266cae301c6014"
+    }
+  ],
+  "jvm": {
+    "tests": 26,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "Error": 0,
+    "Fatal": 0,
+    "Warning": 73
+  },
+  "newInstrumentation": {
+    "storageDatabase": {
+      "passed": 12,
+      "skipped": 0,
+      "seconds": 4.976
+    },
+    "resourceProbe": {
+      "passed": 1,
+      "skipped": 0,
+      "seconds": 26.635
+    }
+  },
+  "zipalign16k": "passed",
+  "physicalPageSizeKiB": 4,
+  "real16kRuntime": "unverified",
+  "preservation": "in-place APK updates; no app-data reset; only generated test files mutated",
+  "testCacheCleanup": {
+    "path": "/data/user/0/dev.keeps.library/cache/budget-probe",
+    "removedKiB": 376052,
+    "productionInferenceCacheKeptKiB": 376052,
+    "modelDirectoryKeptKiB": 473736,
+    "databaseDirectoryKeptKiB": 692
+  }
+}

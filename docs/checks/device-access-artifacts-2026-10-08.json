@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-08",
+  "installedVariant": "benchmark",
+  "signing": "local debug key",
+  "debuggable": false,
+  "artifacts": [
+    {
+      "path": "app/build/outputs/apk/benchmark/app-benchmark.apk",
+      "bytes": 54455769,
+      "sha256": "6d539c90b9ad070e0c2c37b2311da1ebf70e6bbc4f1cf378a75e21d583e94035"
+    },
+    {
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 126512713,
+      "sha256": "a9f5c5b34722d7636972503cb5f1aed75e04f58813576cab41e8a942b3a3575e"
+    },
+    {
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 3539452,
+      "sha256": "680187b37a58a7bdca3256a81f2d86ce878f165cdc92355efbddcc2662b7f265"
+    },
+    {
+      "path": "artifacts/Keeps-preview-device-access-2026-10-08.apk",
+      "bytes": 54455769,
+      "sha256": "6d539c90b9ad070e0c2c37b2311da1ebf70e6bbc4f1cf378a75e21d583e94035"
+    }
+  ],
+  "jvm": {
+    "skipped": 0,
+    "errors": 0,
+    "tests": 26,
+    "failures": 0
+  },
+  "lint": {
+    "Error": 0,
+    "Warning": 71,
+    "Fatal": 0
+  },
+  "newInstrumentation": {
+    "skipped": 0,
+    "variant": "debug",
+    "seconds": 15.531,
+    "passed": 12,
+    "scope": "database migrations generated MediaStore and real metadata discovery"
+  },
+  "zipalign16k": "passed",
+  "physicalPageSizeKiB": 4,
+  "real16kRuntime": "unverified",
+  "modelInferenceRetested": false,
+  "preservation": "in-place APK updates; no app-data reset; metadata-only real-library discovery; no original mutation"
+}

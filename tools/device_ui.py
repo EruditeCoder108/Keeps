@@ -28,7 +28,11 @@ def run(*args):
                           timeout=40).stdout.decode("utf-8", errors="replace")
 
 def ui():
-    run("shell", "uiautomator", "dump", "/data/local/tmp/keeps-ui.xml")
+    result = run("shell", "uiautomator", "dump", "/data/local/tmp/keeps-ui.xml")
+    # Android returns exit code zero on idle timeout and leaves the old file.
+    # Never use that stale tree to tap or claim accessibility verification.
+    if "dumped to:" not in result:
+        raise SystemExit(f"No fresh Android UI tree: {result.strip()}. Hide media controls and retry.")
     run("pull", "/data/local/tmp/keeps-ui.xml", str(out / "current.xml"))
     return ET.parse(out / "current.xml")
 
@@ -40,7 +44,7 @@ if a.action in ("tap", "hold", "inspect", "check-first"):
             if label:
                 print(label, node.get("bounds"))
     elif a.action == "check-first":
-        if not any(n.get("text") == "SEARCH RESULTS" for n in tree.iter("node")):
+        if not any(n.get("text") in ("SEARCH RESULTS", "Matches") for n in tree.iter("node")):
             raise SystemExit("Expected the search-results screen")
         files = [n.get("text") for n in tree.iter("node") if (n.get("text") or "").startswith("fixture-")]
         expected = " ".join(a.values)
@@ -49,6 +53,9 @@ if a.action in ("tap", "hold", "inspect", "check-first"):
         print("PASS: first visible result is", expected)
     else:
         label = " ".join(a.values)
+        allowed = ("dev.keeps.library", "com.google.android.documentsui", "com.android.documentsui", "com.google.android.permissioncontroller", "com.android.permissioncontroller")
+        if not any(n.get("package") in allowed for n in tree.iter("node")):
+            raise SystemExit("Keeps or its Android picker/permission dialog is not foreground. No tap sent.")
         matches = [n for n in tree.iter("node") if label == n.get("text")]
         if not matches:
             matches = [n for n in tree.iter("node") if label == n.get("content-desc")]
@@ -62,6 +69,9 @@ if a.action in ("tap", "hold", "inspect", "check-first"):
             run("shell", "input", "tap", x, y)
         print(a.action, label)
 elif a.action == "text":
+    tree = ui()
+    if not any(n.get("package") == "dev.keeps.library" for n in tree.iter("node")):
+        raise SystemExit("Keeps is not foreground. No text sent.")
     text = " ".join(a.values)
     if not re.fullmatch(r"[A-Za-z0-9 ._-]+", text):
         raise SystemExit("Use plain test text only")

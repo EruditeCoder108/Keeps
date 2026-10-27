@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-27",
+  "scope": "Tracked and nonignored untracked working files; all reachable local Git blobs and commit metadata. No remote refs fetched.",
+  "candidateFiles": 193,
+  "textFilesScanned": 173,
+  "historyBlobsScanned": 54,
+  "historyTextFilesScanned": 47,
+  "reachableCommits": 1,
+  "licensePresent": true,
+  "noticePresent": true,
+  "findings": [],
+  "binaryFilesForManualReview": [
+    "app/src/androidTest/assets/audio/fixture-audio-long.m4a",
+    "app/src/androidTest/assets/audio/fixture-audio-scenes.m4a",
+    "app/src/androidTest/assets/audio/fixture-audio-scenes.mp3",
+    "app/src/androidTest/assets/video/fixture-long-worker.mp4",
+    "app/src/androidTest/assets/video/fixture-moments.mp4",
+    "app/src/main/res/font/geist.ttf",
+    "docs/brand/keeps-icon-preview.png",
+    "docs/brand/keeps-icon.png",
+    "docs/brand/keeps-mark.png",
+    "docs/brand/keeps-monochrome.png",
+    "docs/design/keeps-concept-v1.png",
+    "docs/device/blue-square-search-final.png",
+    "docs/device/gallery.png",
+    "docs/device/pdf-page-two.png",
+    "docs/device/text-preview.png",
+    "docs/device/text-search-fixed.png",
+    "docs/readme/hero.png",
+    "docs/readme/search-story.gif",
+    "docs/readme/search-story.png",
+    "gradle/wrapper/gradle-wrapper.jar"
+  ],
+  "limitations": [
+    "Pattern coverage is limited; no zero-secrets guarantee.",
+    "Binary media and asset rights need manual review.",
+    "Git author name and no-reply identity remain in existing history.",
+    "Ignored local files are outside the publishable candidate scan.",
+    "No hosting visibility, remote history or dependency license compliance assertion."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-27",
+  "localLinksAndAnchorsChecked": 31,
+  "documents": [
+    "README.md",
+    "CONTRIBUTING.md",
+    "docs/OPEN_SOURCE_REVIEW.md"
+  ],
+  "animationFrames": 23,
+  "animationDurationMs": 5700,
+  "assetDecoding": "PASS",
+  "syntheticDetectorChecks": "PASS",
+  "appBuildRerun": false,
+  "reason": "Documentation, publication guardrails and artwork only; no application source change."
+}

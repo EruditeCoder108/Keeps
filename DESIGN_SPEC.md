@@ -1,12 +1,22 @@
 # Keeps: product UI and UX specification
 
-**Version:** 0.1 design proposal · **Date:** 7 October 2026
+**Version:** 0.5 preparation control audit · **Date:** 25 October 2026
 
-**Companion:** [Play Store roadmap](PLAY_STORE_ROADMAP.md)
+**Companion:** [Master roadmap and task ledger](ROADMAP.md) · [original Play Store plan](PLAY_STORE_ROADMAP.md)
+
+The master roadmap controls launch scope and progress. Video moment search is a launch requirement, including search within one video, library-wide results, multiple moments, and player timeline intervals. Detailed screen behavior remains specified here.
+
+The [consumer screen and control contract](docs/PRODUCT_DIRECTION.md) now defines the Settings/Search library rewrite, exclusion-first setup and battery/background behavior. Its target information architecture supersedes the expanded prototype preparation panel described as current below; it does not claim those new screens are implemented.
+
+**18 October implementation:** root Settings destinations, Search library, individual bulk exclusion and long-video review, Advanced diagnostics and separate File activity are implemented as a preview. Geist body text and original dot headings, quieter controls and a slimmer translucent dock replace the earlier generic layout. [Interface evidence](docs/CONSUMER_UI_SLICE.md). Explicit charging/screen-off automation, persistent folder rules, notification Pause and session counters follow in the [overnight slice](docs/OVERNIGHT_PREPARATION_SLICE.md). Full-night and final design acceptance remain open; the historical 17 October controls below describe the preceding build.
+
+**25 October implementation:** preparation has one persisted state shared with notifications, a distinct Pausing state, retained-queue Resume, explicit End run/new scope, and a total/processing/break/other-time report. Automatic/manual starts no longer present competing resume paths. [Audit and current verification](docs/PREPARATION_CONTROL_AUDIT.md). Fresh optimized phone acceptance remains required.
 
 The interface should feel like an everyday Android file manager with an excellent gallery. Its character comes from careful spacing, simple geometry, readable typography, and small translucent controls. The user’s content supplies the color.
 
 ## 1. Visual direction and references
+
+**Latest user direction (8 October):** pure white/black canvas, vivid red accents, geometric tile layout and restrained transparent viewer controls. The supplied Browse/Gallery/Moments/player images are inspiration for hierarchy and interaction, not exact page copies. Avoid soft gradients, glow and fabricated media. Use the user's four-tile file/gallery mark; preserve its supplied raster and transparent cutout in `docs/brand`. Native vector paths provide crisp production launcher rendering. This direction supersedes the warm canvas and multi-color category tiles below.
 
 **Preferred visual reference:** Nothing Gallery. **Preferred browsing reference:** Files by Google. **Preferred organization reference:** Apple Files. Use these as inspiration for an original Keeps interface.
 
@@ -36,9 +46,9 @@ These are starting values; verify them on-device rather than treating a mockup a
 
 | Token | Light | Dark |
 |---|---|---|
-| Canvas | Warm near-white `#F6F6F4` | Near-black `#111112` |
+| Canvas | Pure white `#FFFFFF` | Pure black `#000000` |
 | Primary surface | `#FFFFFF` | `#1C1C1E` |
-| Primary text | `#171719` | `#F5F5F4` |
+| Primary text | `#000000` | `#FFFFFF` |
 | Secondary text | `#626267` | `#B7B7BD` |
 | Divider / outline | `#D8D8DC` | `#414147` |
 | Restrained selection accent | `#B8322C` | `#FF9188` |
@@ -106,7 +116,7 @@ Use top-level **Photos / Albums** segmented navigation inside Gallery.
 
 **Albums:** real folder albums with thumbnail/name/count, pinned albums first, other albums below. Reordering changes presentation; moving media between folder albums changes the file location and must use the normal move workflow. Future virtual collections will use explicit wording such as “Add to collection.”
 
-Albums, category counts, and thumbnails must reconcile after file operations or external edits. Excluded/unavailable media is not shown as if still current.
+Albums, category counts, and thumbnails must reconcile after file operations or external edits. Unavailable media is not shown as if still current. Excluding a file from content search removes its content-derived retrieval data; it remains visible in Browse/Gallery and searchable by filename. Hiding a file from the library is a separate explicit presentation choice if implemented.
 
 ### Search
 
@@ -131,21 +141,24 @@ Images: immersive view, zoom, swipe, favorites/share/details; editing comes in a
 
 PDF: relevant page on entry, visible page controls, zoom, page number, text-match emphasis where supported. Large/damaged/encrypted inputs receive useful recovery or Open with.
 
-Audio/video: matched interval on entry, reliable seeking, playback speed, standard transport controls, and an explicit control to return to the matched moment. Avoid surprise autoplay with sound. The preview concept's playing state is illustrative; default entry behavior is paused unless a clear play action initiated it.
+Audio/video: matched interval on entry, reliable seeking, playback speed, standard transport controls, and an explicit control to return to the matched moment. Video includes Search this video, matching intervals on the timeline, and navigation between distinct useful moments. Show actual preparation coverage when indexing is incomplete. Avoid surprise autoplay with sound. The preview concept's playing state is illustrative; default entry behavior is paused unless a clear play action initiated it.
 
 Hide main-tab navigation while a viewer is open. Keep share/favorite/details reachable; show controls over a strong scrim or restrained glass. Returning restores the originating list.
 
 ### Settings
 
-Group into:
+Use a short root list of destinations:
 
 - Appearance: System/Light/Dark, Solid controls, gallery density.
-- Content search: model/setup status, included/excluded locations/types, charging policy, pause/resume, search history.
+- Search library: a status row opening the dedicated preparation screen also reachable from Search; model/setup, approved scope, easy bulk/location exclusions, automatic charging-first policy, Pause/Resume and progress live there. No search-history control until implemented.
+- Device access: real gallery/shared-storage permission state and chosen locations; access does not enable inference.
 - Storage: separate original-file usage, model, index, thumbnails/cache; precise delete/clear actions.
 - Privacy/help: understandable local-processing explanation, policy, notices, supported formats, support.
 - Advanced: manual model import and diagnostic information where necessary.
 
 Developer timings, embedding dimensions, raw provider identifiers, and internal status tables belong in debug-only tools.
+
+File operations and recovery move to File activity reachable from Browse and active-operation banners. Do not expand an operation journal or RAM refresh/release panel in root Settings. Search library review includes long-video sorting by duration/size and an Excluded view; excluding content preserves browsing, filename search and originals. Automatic preparation uses bounded internal batches without repeatedly asking the person to prepare another 25 files. Computer-assisted preparation is future work, with no launch controls.
 
 ## 6. Selection and file-operation flows
 
@@ -165,13 +178,17 @@ Developer timings, embedding dimensions, raw provider identifiers, and internal 
 
 Avoid a slideshow.
 
-1. Show a useful Browse shell with “Choose a folder” and “Show photos and videos” actions.
-2. Explain access in context, then use the appropriate Android permission/picker flow. Partial/declined access has a usable path.
+**Current prototype controls (17 October, transitional):** Content search is expanded in Settings: model source/import and readiness, content-type chips/counts, then pace, batch size and live controls. The implementation defaults to Gentle and 25 files, offers Balanced/100/All remaining, and charging-only is currently off by default. These are current implementation facts, not the consumer target. Replace this panel using the [consumer contract](docs/PRODUCT_DIRECTION.md); retain working behavior until its replacement is verified. Thermal comfort, full-night scheduling and battery cost remain device acceptance gates.
+
+1. Show a useful Browse shell and one **Open your device library** prompt. **Allow device access** requests gallery access, then opens Android's separate all-files setting. Recognize existing grants; **Not now**, **Choose a folder**, and **Add files** remain available.
+2. Recheck actual access after returning from Android settings and whenever the app resumes. Explain that the folder picker cannot select the internal-storage root. Automatically discover permitted media and Android-cataloged shared files in the background, showing found-item progress while Browse remains usable. Settings offers **Run access setup** and truthful full/selected/denied access state. Partial/declined access has a usable path.
 3. Offer Content search after locations are visible. Show model size, expected storage, Wi-Fi preference, and Enable/Later choices.
 4. Let users review exclusions before background content processing.
 5. Return to the library immediately. Progress belongs in Search or Settings.
 
 If a reviewed full-file-manager access path is present, explain its shared-storage purpose at the relevant moment. Never tell a selected-folder user that the entire phone is accessible.
+
+The implemented device-access follow-up caches permission snapshots for each discovery/filter pass, performs provider/file checks away from Compose, and publishes metadata in batches. Access to ordinary files never starts AI preparation. [Implementation and current phone evidence](docs/DEVICE_ACCESS_SLICE.md); fresh-install denial and selected-access recovery coverage remains pending.
 
 Example consumer copy:
 

@@ -1,0 +1,116 @@
+{
+  "errors": 0,
+  "failures": 0,
+  "android_simulation_tests": 23,
+  "skipped": 0,
+  "environment": "Laptop JDK21 / Robolectric API35; no ADB or physical phone",
+  "core_tests": 43,
+  "audit_started": "2026-10-25",
+  "date": "2026-10-26",
+  "suites": [
+    {
+      "skipped": 0,
+      "name": "dev.keeps.core.AudioInterleavingTest",
+      "errors": 0,
+      "seconds": 0.045,
+      "failures": 0,
+      "tests": 4
+    },
+    {
+      "skipped": 0,
+      "name": "dev.keeps.core.AudioPcmTest",
+      "errors": 0,
+      "seconds": 0.053,
+      "failures": 0,
+      "tests": 6
+    },
+    {
+      "skipped": 0,
+      "name": "dev.keeps.core.FileNamesTest",
+      "errors": 0,
+      "seconds": 0.042,
+      "failures": 0,
+      "tests": 2
+    },
+    {
+      "skipped": 0,
+      "name": "dev.keeps.core.MomentRankingTest",
+      "errors": 0,
+      "seconds": 0.013,
+      "failures": 0,
+      "tests": 3
+    },
+    {
+      "skipped": 0,
+      "name": "dev.keeps.core.PreparationHeatTest",
+      "errors": 0,
+      "seconds": 0.008,
+      "failures": 0,
+      "tests": 6
+    },
+    {
+      "skipped": 0,
+      "name": "dev.keeps.core.PreparationSchedulingTest",
+      "errors": 0,
+      "seconds": 0.009,
+      "failures": 0,
+      "tests": 6
+    },
+    {
+      "skipped": 0,
+      "name": "dev.keeps.core.PreparationTest",
+      "errors": 0,
+      "seconds": 0.005,
+      "failures": 0,
+      "tests": 5
+    },
+    {
+      "skipped": 0,
+      "name": "dev.keeps.core.SearchTest",
+      "errors": 0,
+      "seconds": 0.027,
+      "failures": 0,
+      "tests": 6
+    },
+    {
+      "skipped": 0,
+      "name": "dev.keeps.core.StreamsTest",
+      "errors": 0,
+      "seconds": 0.001,
+      "failures": 0,
+      "tests": 2
+    },
+    {
+      "skipped": 0,
+      "name": "dev.keeps.core.WavTest",
+      "errors": 0,
+      "seconds": 0.005,
+      "failures": 0,
+      "tests": 3
+    },
+    {
+      "skipped": 0,
+      "name": "dev.keeps.library.indexing.PreparationControllerTest",
+      "errors": 0,
+      "seconds": 94.932,
+      "failures": 0,
+      "tests": 9
+    },
+    {
+      "skipped": 0,
+      "name": "dev.keeps.library.indexing.PreparationRepositoryTest",
+      "errors": 0,
+      "seconds": 10.697,
+      "failures": 0,
+      "tests": 11
+    },
+    {
+      "skipped": 0,
+      "name": "dev.keeps.library.indexing.PreparationWorkerTest",
+      "errors": 0,
+      "seconds": 1.401,
+      "failures": 0,
+      "tests": 3
+    }
+  ]
+}

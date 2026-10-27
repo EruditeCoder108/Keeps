@@ -1,0 +1,40 @@
+{
+  "all_jni_names_retained": true,
+  "classes": [
+    {
+      "class": "com.google.ai.edge.litertlm.InputData",
+      "optimized_name": "com.google.ai.edge.litertlm.InputData",
+      "retained": true
+    },
+    {
+      "class": "com.google.ai.edge.litertlm.InputData$Text",
+      "optimized_name": "com.google.ai.edge.litertlm.InputData$Text",
+      "retained": true
+    },
+    {
+      "class": "com.google.ai.edge.litertlm.InputData$Image",
+      "optimized_name": "com.google.ai.edge.litertlm.InputData$Image",
+      "retained": true
+    },
+    {
+      "class": "com.google.ai.edge.litertlm.InputData$Audio",
+      "optimized_name": "com.google.ai.edge.litertlm.InputData$Audio",
+      "retained": true
+    },
+    {
+      "class": "com.google.ai.edge.litertlm.EmbeddingResponse",
+      "optimized_name": "com.google.ai.edge.litertlm.EmbeddingResponse",
+      "retained": true
+    },
+    {
+      "class": "com.google.ai.edge.litertlm.BenchmarkInfo",
+      "optimized_name": "com.google.ai.edge.litertlm.BenchmarkInfo",
+      "retained": true
+    },
+    {
+      "class": "com.google.ai.edge.litertlm.LiteRtLmJniException",
+      "optimized_name": "com.google.ai.edge.litertlm.LiteRtLmJniException",
+      "retained": true
+    }
+  ]
+}

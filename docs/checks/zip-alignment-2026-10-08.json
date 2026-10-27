@@ -1,0 +1,10 @@
+[
+  {
+    "apk": "app/build/outputs/apk/debug/app-debug.apk",
+    "zip16k": true
+  },
+  {
+    "apk": "app/build/outputs/apk/benchmark/app-benchmark.apk",
+    "zip16k": true
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-18",
+  "variant": "benchmark",
+  "bytes": 54642783,
+  "sha256": "eea8255c09c4d533b4c6fb4904bf6c2778417d0f0b9ed0325bec7549a57bdd63",
+  "installed": true,
+  "signing": "local debug key",
+  "jvm_tests": 37,
+  "android_tests": 14,
+  "lint_errors": 0,
+  "lint_warnings": 83,
+  "preparation_started_by_ui_probe": false,
+  "coverage_before": 24,
+  "coverage_after": 24,
+  "notes": "Optimized filename lookup and generated image viewer checked. Brief natural-language query returned lexical results; semantic ranking not established by that probe."
+}

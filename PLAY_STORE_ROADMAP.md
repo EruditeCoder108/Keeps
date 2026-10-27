@@ -1,5 +1,7 @@
 # Keeps: roadmap from working prototype to Google Play
 
+> **Historical planning document.** The [master roadmap](ROADMAP.md) supersedes this document's scope, priority, and delivery order from 7 October 2026. Track new work there. In particular, video moment search is required for launch and ZIP tools move to P1. This file preserves the original research and estimate.
+
 **Planning date:** 7 October 2026
 
 **Status:** proposed product and delivery plan; the production features below are not yet implemented.

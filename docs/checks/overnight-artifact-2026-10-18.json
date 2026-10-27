@@ -1,0 +1,16 @@
+{
+  "background_probe": "passed on debug build: 2 generated files, 102.244s including scheduling/pacing",
+  "date": "2026-10-18",
+  "sha256": "6bead18854b9c4601aa13ae327313324f5c685437646045cccbfd53fdbd98586",
+  "signing": "local debug key",
+  "variant": "benchmark",
+  "android_tests": 21,
+  "installed": true,
+  "lint_errors": 0,
+  "bytes": 54708895,
+  "lint_warnings": 88,
+  "jvm_tests": 37,
+  "coverage_before": 25,
+  "coverage_after": 25,
+  "automatic_mode_left_enabled": false
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "path": "D:\\Projects 2\\whiteboard\\android-library\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+    "bytes": 125120790,
+    "sha256": "A1267D18EF442CF0C46E148B67F28758E1DA398C75B0F42CCB5992CF425A4314",
+    "modified": "2026-10-08T08:29:01"
+  },
+  {
+    "path": "D:\\Projects 2\\whiteboard\\android-library\\app\\build\\outputs\\apk\\benchmark\\app-benchmark.apk",
+    "bytes": 54190869,
+    "sha256": "339A3CB79CB4D09E0BD8ED15DF07CBB70F028885901FB917C2C74716ABEC5D39",
+    "modified": "2026-10-08T08:46:03"
+  }
+]

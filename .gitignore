@@ -17,3 +17,27 @@ Thumbs.db
 !.env.example
 *.apk
 *.aab
+
+# Device evidence stays local unless explicitly reviewed and allowlisted.
+# Existing tracked fixture screenshots are not removed by these rules.
+docs/device/
+docs/checks/*.log
+docs/checks/*.txt
+docs/design/references/
+docs/brand/user-*.png
+
+# Never publish personal catalogs, model caches or signing credentials.
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.pem
+*.p12
+*.pfx
+keystore.properties
+signing.properties
+google-services.json
+service-account*.json

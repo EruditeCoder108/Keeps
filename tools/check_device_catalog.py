@@ -24,10 +24,10 @@ out.mkdir(parents=True, exist_ok=True)
 for suffix in ("", "-wal"):
     result = subprocess.run([str(adb), "-s", a.serial, "exec-out", "run-as", "dev.keeps.library",
                              "cat", f"databases/keeps.db{suffix}"], capture_output=True, timeout=20)
-    if result.returncode == 0:
+    if result.returncode == 0 and (suffix != "" or result.stdout.startswith(b"SQLite format 3\x00")):
         (out / f"keeps.db{suffix}").write_bytes(result.stdout)
     elif suffix == "":
-        raise SystemExit(result.stderr.decode(errors="replace"))
+        raise SystemExit("Keeps debug database is unavailable. Install/launch the app first. No valid SQLite snapshot was received.")
 
 database = sqlite3.connect(out / "keeps.db")
 database.row_factory = sqlite3.Row
@@ -36,7 +36,7 @@ if any(not row["name"].startswith("fixture-") for row in rows):
     raise SystemExit("Refusing to report a library containing non-fixture files")
 report = []
 for row in rows:
-    chunks = database.execute("SELECT pageNumber,startMs,endMs,length(vector) AS vectorBytes FROM chunks WHERE assetId=?", (row["id"],)).fetchall()
+    chunks = database.execute("SELECT pageNumber,startMs,endMs,recipe,frameCount,hasAudio,audioUnavailable,length(vector) AS vectorBytes,length(visualVector) AS visualVectorBytes FROM chunks WHERE assetId=?", (row["id"],)).fetchall()
     report.append({"name": row["name"], "status": row["status"], "detail": row["detail"],
                    "chunks": [dict(chunk) for chunk in chunks]})
 database.close()
