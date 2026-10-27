@@ -476,7 +476,7 @@ Status vocabulary: **TODO, ACTIVE, BLOCKED, VERIFY, DONE, DEFERRED**. DONE requi
 | M6-01 | Signed/minified AAB, Play App Signing plan, versioning, symbols, ABI/native checks | TODO | Actual release artifact and hashes |
 | M6-02 | Play-delivered install, signed upgrades, Room migrations, retained grants/model state | TODO | Internal-track delivery/upgrade evidence |
 | M6-03 | Privacy policy, data safety, permission evidence, notices and app content declarations | TODO | Release-specific draft submission package |
-| M6-04 | Final icon, feature graphic, actual screenshots, supported claims and reviewer steps | ACTIVE | [Original vector/adaptive/themed logo and 512px source](docs/brand/README.md); feature graphic, release screenshots and reviewer steps remain |
+| M6-04 | Final icon, feature graphic, actual screenshots, supported claims and reviewer steps | ACTIVE | [Vector/adaptive/themed logo, 512px source and 1280×640 repository social card/template](docs/brand/README.md); Play feature graphic, release screenshots and reviewer steps remain |
 | M6-05 | Tester/support preparation, hosting readiness, defect triage and release checklist | TODO | Named owners and operational runbook |
 
 **Exit:** installable production configuration matches every declaration/claim and is ready for closed testing. Upload/account actions require the publisher's actual credentials/authorization when executed.

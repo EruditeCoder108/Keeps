@@ -17,3 +17,20 @@ The foreground is scaled to 76% around the 108 dp viewport center after the user
 Re-export with `python tools/create_brand_assets.py` (svglib, reportlab, PyMuPDF and Pillow). The PNGs are rasterized from the SVG master. Update the path/color definitions in that script to keep all exports and Android resources consistent.
 
 Palette: black `#000000`, red `#FF001F`, white `#FFFFFF`. Keep the full adaptive background; launcher masks supply the outer shape. Do not pre-round the store-icon source.
+
+## Repository social preview
+
+- [Upload-ready PNG](keeps-repo-card.png): 1280 × 640 pixels, solid background,
+  under 1 MB. All important content sits at least 64 pixels inside the canvas.
+- [Self-contained SVG template](keeps-repo-card.svg): exact vector identity and
+  outlined Geist typography; no external fonts, images or services are required.
+- Regenerate with `python tools/create_repo_card.py`. Edit the `COPY` dictionary
+  in that script to change the headline, description or repository label. The
+  generator checks text placement and output dimensions/size.
+
+To activate it, open the repository's **Settings → General → Social preview →
+Edit → Upload an image**, then select the PNG. Committing the image alone does
+not configure GitHub's social preview. See [GitHub's instructions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/customizing-your-repositorys-social-media-preview).
+
+The card uses Keeps' four-tile logo, original geometric layout and OFL Geist.
+It includes no personal media, performance claims or fabricated popularity stats.
