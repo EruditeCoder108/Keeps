@@ -1,0 +1,21 @@
+{
+  "sourceCommit": "4b144130e192dc578c0415c5911bb8943c42b08a",
+  "apk": "Keeps-0.1.0-preview.1.apk",
+  "bytes": 54758047,
+  "sha256": "4c0dacc31a36b5d03958ec6b37c69718807ef34a43d9b5dbbc1e16b3f29897a9",
+  "variant": "benchmark",
+  "versionName": "0.1.0",
+  "versionCode": 1,
+  "minimumAndroidApi": 31,
+  "signing": "local debug certificate; optimized non-debuggable preview",
+  "hasInternetPermission": false,
+  "containsModelOrPrivateDatabase": false,
+  "staticNativeZipAndJniChecks": "PASS",
+  "newDeviceTesting": false,
+  "priorTestResults": {
+    "core": 43,
+    "simulatedAndroid": 27,
+    "failures": 0
+  },
+  "buildCheck": "assembleBenchmark successful; most tasks cached"
+}

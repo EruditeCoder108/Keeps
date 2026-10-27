@@ -16,6 +16,7 @@
 
 <p align="center">
   <a href="#what-keeps-does">Explore</a> ·
+  <a href="#download-preview">Download</a> ·
   <a href="#build-it">Build</a> ·
   <a href="#make-it-yours">Get started</a> ·
   <a href="ROADMAP.md">Roadmap</a> ·
@@ -77,6 +78,20 @@ A cloud document provider can fetch files through its own network access. Sharin
 | **Prepare now, including on battery** | A manual run, plugged in or on battery; screen may stay on | Start another run to include new files |
 
 Turn automatic preparation off to start a manual run. Both use the same model and mandatory thermal/resource checks. Gentle/Balanced pacing and cooling can pause work; Android can defer background execution. Session counters separate processing, short rests and other elapsed time. [Control and pacing details](docs/PREPARATION_CONTROL_AUDIT.md).
+
+## Download preview
+
+**[Download the Android APK →](https://github.com/EruditeCoder108/Keeps/releases/download/v0.1.0-preview.1/Keeps-0.1.0-preview.1.apk)**
+
+Android **12+**, arm64-v8a or x86_64; approximately **54.8 MB**. This optimized
+build is **debug-signed** and published as a **development pre-release**, not a
+production/Play release. Android may ask you to allow installation from your
+browser or file manager. The AI model is downloaded/imported separately.
+
+[Release notes, SHA-256 checksum and build metadata](https://github.com/EruditeCoder108/Keeps/releases/tag/v0.1.0-preview.1).
+If an existing installation has a different signing certificate, do not uninstall
+it just to force an update without accounting for the loss of its local app data.
+See the preview limitations above and the [verification record](docs/checks/github-preview-apk-2026-10-27.json).
 
 ## Build it
 

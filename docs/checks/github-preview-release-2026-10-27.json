@@ -1,0 +1,27 @@
+{
+  "releaseUrl": "https://github.com/EruditeCoder108/Keeps/releases/tag/v0.1.0-preview.1",
+  "tag": "v0.1.0-preview.1",
+  "sourceCommit": "4b144130e192dc578c0415c5911bb8943c42b08a",
+  "prerelease": true,
+  "publicApkDownloadVerified": true,
+  "assets": [
+    {
+      "name": "build-info.json",
+      "bytes": 703,
+      "sha256": "349dd0eefaa12d0a026aeff3c1491287b5b3b52c63f300151cc35f645ce21654",
+      "url": "https://github.com/EruditeCoder108/Keeps/releases/download/v0.1.0-preview.1/build-info.json"
+    },
+    {
+      "name": "Keeps-0.1.0-preview.1.apk",
+      "bytes": 54758047,
+      "sha256": "4c0dacc31a36b5d03958ec6b37c69718807ef34a43d9b5dbbc1e16b3f29897a9",
+      "url": "https://github.com/EruditeCoder108/Keeps/releases/download/v0.1.0-preview.1/Keeps-0.1.0-preview.1.apk"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 93,
+      "sha256": "f695b21f47a12b4a1ef6e7b25123a63bdb1bdb51214312960531982866e09219",
+      "url": "https://github.com/EruditeCoder108/Keeps/releases/download/v0.1.0-preview.1/SHA256SUMS.txt"
+    }
+  ]
+}

@@ -17,6 +17,7 @@ Thumbs.db
 !.env.example
 *.apk
 *.aab
+artifacts/
 
 # Device evidence stays local unless explicitly reviewed and allowlisted.
 # Existing tracked fixture screenshots are not removed by these rules.
